@@ -33,10 +33,10 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="Fxw-aS-TEm">
                                         <rect key="frame" x="0.0" y="55" width="354" height="35"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="키" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhg-NG-aSM">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="키" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTa-2P-ZRG">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="35"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="KJe-01-B9r"/>
+                                                    <constraint firstAttribute="width" constant="60" id="e0A-TG-Yax"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
@@ -89,6 +89,7 @@
                                 </state>
                                 <connections>
                                     <action selector="calcuBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iV0-2i-tQW"/>
+                                    <segue destination="qTn-i0-GqA" kind="presentation" identifier="toSecondVC" id="uya-Mr-tS6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -104,6 +105,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="calculationBtn" destination="KXL-qd-SbX" id="FXD-0x-ge5"/>
                         <outlet property="heightTextField" destination="0e5-Pj-9Ia" id="afO-bk-RiU"/>
                         <outlet property="mainLabel" destination="aEZ-m7-wpt" id="YWJ-ax-qQm"/>
                         <outlet property="weightTextField" destination="rEB-Ry-hbw" id="0vg-Gk-UhD"/>
@@ -113,16 +115,16 @@
             </objects>
             <point key="canvasLocation" x="45" y="70"/>
         </scene>
-        <!--View Controller-->
+        <!--Second View Controller-->
         <scene sceneID="7BP-Ey-N4H">
             <objects>
-                <viewController id="qTn-i0-GqA" sceneMemberID="viewController">
+                <viewController id="qTn-i0-GqA" customClass="SecondViewController" customModule="BMI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yYg-ag-8J6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zIo-gW-47C">
-                                <rect key="frame" x="107" y="174" width="200" height="180"/>
+                                <rect key="frame" x="107" y="130" width="200" height="180"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BMI 결과값" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beJ-Mw-un8">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
@@ -157,7 +159,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9J1-yI-68T">
-                                <rect key="frame" x="20" y="787" width="374" height="45"/>
+                                <rect key="frame" x="20" y="733" width="374" height="45"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="bVD-DN-6ko"/>
@@ -167,6 +169,9 @@
                                 <state key="normal" title="다시 계산하기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="backBtnTapped:" destination="qTn-i0-GqA" eventType="touchUpInside" id="bSN-vY-TVh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Sf9-f7-YRN"/>
@@ -180,8 +185,22 @@
                             <constraint firstItem="9J1-yI-68T" firstAttribute="leading" secondItem="Sf9-f7-YRN" secondAttribute="leading" constant="20" id="cpG-DW-V2z"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="adviceLabel" destination="0uc-P6-ojK" id="rqW-DH-g4q"/>
+                        <outlet property="backBtn" destination="9J1-yI-68T" id="7R7-OI-aMy"/>
+                        <outlet property="bmiNumLabel" destination="LP7-X7-ueF" id="Ed7-0U-87j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Op6-M3-UXF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="키" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhg-NG-aSM">
+                    <rect key="frame" x="0.0" y="0.0" width="60" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="KJe-01-B9r"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </objects>
             <point key="canvasLocation" x="791" y="88"/>
         </scene>
