@@ -15,7 +15,10 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var backBtn: UIButton!
     
     
-    var bmi : Double?
+    // 전화면에서 전달받은 데이터들
+    var bmiNumber: Double?
+    var adviceString: String?
+    var bmiColor: UIColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +30,19 @@ class SecondViewController: UIViewController {
         bmiNumLabel.clipsToBounds = true
         bmiNumLabel.layer.cornerRadius = 8
         bmiNumLabel.backgroundColor = .gray
+        backBtn.setTitle("다시 계산하기", for: .normal)
         
         backBtn.clipsToBounds = true
         backBtn.layer.cornerRadius = 5
         
-        guard let bmi = bmi else {return}
+        guard let bmi = bmiNumber else {return}//bmi 가 nil 이 되지 않게
         bmiNumLabel.text = String(bmi)
+        adviceLabel.text = adviceString
+        bmiNumLabel.backgroundColor = bmiColor
+        
+        
+       
+
         
     }
     
